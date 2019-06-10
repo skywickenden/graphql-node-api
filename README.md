@@ -14,3 +14,5 @@ Then from the command line in the parent folder:
   * Run with `docker-compose up`
 
 To install new packages: Run the api docker with `docker-compose run api sh` and then use `api install <package_name>`. Type `exit` to return to your command line and then rebuild and rerun - only this time add a -V switch... `docker-compose up -V`. This will force the deletion of the anonymous node_package volume and prevent a [docker race condition issue.](https://github.com/docker/compose/issues/4337)
+
+Testing is performed using Jest and SuperTest. See an example in `foo.test.js`
