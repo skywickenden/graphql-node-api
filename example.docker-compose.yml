@@ -2,7 +2,7 @@ version: "3.7"
 
 services: 
   api:
-    container_name: api-boilerplate
+    container_name: api-blueprint
     build: ./api
     command: npm run start
     environment: 
