@@ -1,4 +1,4 @@
-# api-boilerplate
+# api-blueprint
 
 A simple hot reloading Express API boilerplate with an example docker-compose setup.
 
