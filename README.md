@@ -6,6 +6,21 @@ Uses `nodemon` for automatic server restarting.
 
 Expects `PORT` to be set as an environment variable.
 
+### Setup
+
+In the parent project folder create a sub folder called 'api'. Create a new git repository in the api folder and `cd` into it. Create a new repository on github for this fork, then clone it locally with:
+
+    git clone https://github.com/<username>/<new_repository_name>
+  
+Now add this repository as an upsteream remote with:
+ 
+    git remote add upstream https://github.com/skywickenden/api-blueprint.git
+  
+Pull the old repository down and push it back to the new one.
+
+    git pull upstream master
+    git push origin master
+
 Copy the contents of `example.env` and `example.docker-compose.yml` into the parent folder - into files without the `example.` prefix. 
 
 Then from the command line in the parent folder:
