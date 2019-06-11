@@ -1,6 +1,7 @@
-# api-blueprint
+# graphql-node-api
 
-A simple hot reloading Express API boilerplate with an example docker-compose setup.
+A hot reloading Express API boilerplate with graphql and mongo db and a docker-compose setup.
+This extended from https://github.com/skywickenden/api-blueprint 
 
 Uses `nodemon` for automatic server restarting.
 
@@ -14,7 +15,7 @@ In the parent project folder create a sub folder called 'api'. Create a new git 
   
 Now add this repository as an upsteream remote with:
  
-    git remote add upstream https://github.com/skywickenden/api-blueprint.git
+    git remote add upstream https://github.com/skywickenden/graphql-node-api
   
 Pull the old repository down and push it back to the new one.
 
