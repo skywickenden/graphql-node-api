@@ -1,4 +1,4 @@
-# graphql-node-api
+# graphql-node-blueprint
 
 A hot reloading Express API boilerplate with graphql, mongo db and a docker-compose setup.
 This is extended from https://github.com/skywickenden/api-blueprint 
