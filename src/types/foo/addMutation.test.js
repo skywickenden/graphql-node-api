@@ -2,11 +2,11 @@ const supertest = require("supertest");
 const app = require("../../../app");
 const isJSON = require("../../helpers/isJSON");
 
-describe('Test the addFoo mutation', () => {
+describe("Test the addFoo mutation", () => {
   let newFooId;
-  test('It should perform an addFoo mutation', () => {
+  test("It should perform an addFoo mutation", () => {
     return supertest(app)
-      .post('/graphql').expect(200)
+      .post("/graphql").expect(200)
       .send({
         query: `
           mutation {

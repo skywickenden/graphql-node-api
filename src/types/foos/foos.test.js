@@ -3,20 +3,20 @@ const app = require("../../../app");
 const isJSON = require("../../helpers/isJSON");
 const FooModel = require("../foo/model");
 
-describe('Test the foos query', () => {
+describe("Test the foos query", () => {
 
   let foo1, foo2;
   beforeEach(async (done) => {
     await FooModel.deleteMany({}, () => {});
-    foo1 = await new FooModel({foobar: 'baztest1'}).save();
-    foo2 = await new FooModel({foobar: 'baztest2'}).save();
+    foo1 = await new FooModel({foobar: "baztest1"}).save();
+    foo2 = await new FooModel({foobar: "baztest2"}).save();
     done();
   });
 
-  test('It should fetch the foos', () => {
+  test("It should fetch the foos", () => {
     return supertest(app)
-      .post('/graphql')
-      .send({'query': `
+      .post("/graphql")
+      .send({"query": `
         query {
           Foos {
             id
