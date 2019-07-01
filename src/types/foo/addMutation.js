@@ -10,7 +10,7 @@ module.exports = {
   args: {
     foobar: { type: GraphQLNonNull(GraphQLString) }
   },
-  resolve: (root, args, context, info) => {
+  resolve: (root, args) => {
     const foo = new FooModel(args);
     return foo.save();
   }

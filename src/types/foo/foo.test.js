@@ -2,11 +2,11 @@ const supertest = require("supertest");
 const app = require("../../../app");
 const isJSON = require("../../helpers/isJSON");
 
-describe('Test the foo mutation and query', () => {
+describe("Test the foo mutation and query", () => {
   let newFooId;
-  test('It should perform an addFoo mutation', () => {
+  test("It should perform an addFoo mutation", () => {
     return supertest(app)
-      .post('/graphql').expect(200)
+      .post("/graphql").expect(200)
       .send({
         query: `
           mutation {
@@ -15,7 +15,7 @@ describe('Test the foo mutation and query', () => {
               foobar
             }
           }`
-        })
+      })
       .expect(200)
       .expect(function (res) {
         expect(isJSON(res.text)).toBe(true);
@@ -33,31 +33,31 @@ describe('Test the foo mutation and query', () => {
             }
           }
         });
-      })
+      });
   });
 
-  test('It should fetch the foo query', () => {
-      return supertest(app)
-        .post('/graphql').expect(200)
-        .send({'query': `
-          query {
-            foo(id: "${newFooId}") {
-              id
-              foobar
+  test("It should fetch the foo query", () => {
+    return supertest(app)
+      .post("/graphql").expect(200)
+      .send({"query": `
+        query {
+          foo(id: "${newFooId}") {
+            id
+            foobar
+          }
+        }
+      `})
+      .expect(200)
+      .expect(function (res) {
+        expect(JSON.parse(res.text)).toEqual({
+          data: {
+            foo: {
+              id: newFooId,
+              foobar: "moreFoo"
             }
           }
-        `})
-        .expect(200)
-        .expect(function (res, foo) {
-          expect(JSON.parse(res.text)).toEqual({
-            data: {
-              foo: {
-                id: newFooId,
-                foobar: "moreFoo"
-              }
-            }
-          });
-        })
+        });
+      });
   });
-})
+});
 
