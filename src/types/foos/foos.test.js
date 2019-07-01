@@ -2,21 +2,22 @@ const supertest = require("supertest");
 const app = require("../../../app");
 const FooModel = require("../foo/model");
 
-describe("Test the foo mutation and query", () => {
+describe("Test the foos query", () => {
 
-  let foo;
+  let foo1, foo2;
   beforeEach(async (done) => {
     await FooModel.deleteMany({}, () => {});
-    foo = await new FooModel({foobar: "baz"}).save();
+    foo1 = await new FooModel({foobar: "baztest1"}).save();
+    foo2 = await new FooModel({foobar: "baztest2"}).save();
     done();
   });
 
-  test("It should fetch the foo query", () => {
+  test("It should fetch the foos", () => {
     return supertest(app)
       .post("/graphql")
       .send({"query": `
         query {
-          Foo(id: "${foo.id}") {
+          Foos {
             id
             foobar
           }
@@ -26,13 +27,18 @@ describe("Test the foo mutation and query", () => {
       .expect(function (res) {
         expect(JSON.parse(res.text)).toEqual({
           data: {
-            Foo: {
-              id: foo.id,
-              foobar: "baz"
-            }
+            Foos: [
+              {
+                id: foo1.id,
+                foobar: "baztest1"
+              },
+              {
+                id: foo2.id,
+                foobar: "baztest2"
+              }
+            ]
           }
         });
       });
   });
 });
-

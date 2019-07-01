@@ -1,18 +1,17 @@
 const {
-  GraphQLNonNull,
-  GraphQLString
+  GraphQLID,
+  GraphQLNonNull
 } = require("graphql");
 const FooType = require("./type");
 const FooModel = require("./model");
 
 module.exports = {
   type: FooType,
-  description: "Add an item of Foo",
+  description: "Delete an item of Foo",
   args: {
-    foobar: { type: GraphQLNonNull(GraphQLString) }
+    id: { type: GraphQLNonNull(GraphQLID) }
   },
   resolve: (root, args) => {
-    const foo = new FooModel(args);
-    return foo.save();
+    return FooModel.findById(args.id).deleteOne().exec();
   }
 };
